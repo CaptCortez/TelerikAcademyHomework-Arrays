@@ -1,0 +1,51 @@
+using System;
+
+namespace SelectionSort
+{
+    class SelectionSort
+    {
+        static void Main()
+        {
+            Console.WriteLine("Enter length of the array:");
+            int length;
+            do
+            {
+                Console.Write("Length = ");
+            }
+            while (!int.TryParse(Console.ReadLine(), out length));
+
+            int[] array = new int[length];
+
+            for (int m = 0; m < length; m++)
+            {
+                array[m] = int.Parse(Console.ReadLine());
+            }
+
+            int i, j;
+            int min, temp;
+
+            for (i = 0; i < length - 1; i++)
+            {
+                min = i;
+
+                for (j = i + 1; j < length; j++)
+                {
+                    if (array[j] < array[min])
+                    {
+                        min = j;
+                    }
+                }
+
+                temp = array[i];
+                array[i] = array[min];
+                array[min] = temp;
+            }
+
+            for (int s = 0; s < length; s++)
+            {
+                Console.Write(array[s] + ",");
+            }
+            Console.WriteLine();
+        }
+    }
+}
