@@ -1,0 +1,52 @@
+using System;
+
+namespace MaxSumOfKElements
+{
+    class MaxSumOfKElements
+    {
+        static void Main()
+        {
+            int n, k;
+            Console.Write("N = ");
+            int.TryParse(Console.ReadLine(), out n);
+            int[] array = new int[n];
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = int.Parse(Console.ReadLine());
+            }
+
+            Console.Write("\nK = ");
+            int.TryParse(Console.ReadLine(), out k);
+            int sum = 0;
+            int bestSum = 0;
+            string kElemsWithBestSum = "";
+            string currentElementsWithBestSum = "";
+            int length = array.Length;
+
+            for (int i = 0; i < n; i++)
+            {
+
+                sum = 0;
+                currentElementsWithBestSum = "";
+                if (i + k > length)
+                {
+                    break;
+                }
+                for (int j = i; j < k + i; j++)
+                {
+                    sum += array[j];
+                    currentElementsWithBestSum += array[j] + " ";
+                }
+                if (bestSum < sum)
+                {
+                    bestSum = sum;
+                    kElemsWithBestSum = currentElementsWithBestSum;
+                }
+            }
+            Console.WriteLine("The best sum is: {0}", bestSum);
+            Console.WriteLine("The elements with the best sum are: {0}", kElemsWithBestSum);
+            Console.WriteLine();
+        }
+    }
+}
