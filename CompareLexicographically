@@ -1,0 +1,76 @@
+using System;
+
+namespace CompareLexicographically
+{
+    class CompareLexicographically
+    {
+        static void Main()
+        {
+            char[] alphabet = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+            Console.WriteLine("Enter two words to see which one is first in the lexicographic scheme:\n");
+            int? result = null;
+
+            Console.Write("Please enter first word:\n\t");
+            string firstWord = Console.ReadLine();
+            char[] firstCharArray = firstWord.ToCharArray();
+            int lengthOfFirst = firstCharArray.Length;
+
+            Console.Write("Please enter second word:\n\t");
+            string secondWord = Console.ReadLine();
+            char[] secondCharArray = secondWord.ToCharArray();
+            int lengthOfSecond = secondCharArray.Length;
+
+            int check = lengthOfFirst - lengthOfSecond;
+
+            if (check < 0)
+            {
+                Console.WriteLine("First CHAR array is lexicographically FIRST!");
+                return;
+            }
+            else if (check > 0)
+            {
+                Console.WriteLine("Second CHAR array is lexicographically FIRST!");
+                return;
+            }
+            else
+            {
+                int tmp1 = 0;
+                int tmp2 = 0;
+                int length = lengthOfFirst = lengthOfSecond;
+                for (int i = 0; i < length; i++)
+                {
+                    for (int j = 0; j < alphabet.Length; j++)
+                    {
+                        if(firstCharArray[i] == alphabet[j])
+                        {
+                            tmp1 = j;
+                        }
+                    }
+                    for (int k = 0; k < alphabet.Length; k++)
+                    {
+                        if (secondCharArray[i] == alphabet[k])
+                        {
+                            tmp2 = k;
+                        }
+                    }
+                    result = tmp1 - tmp2;
+                    if (result < 0)
+                    {
+                        Console.WriteLine("First CHAR array is lexicographically FIRST!");
+                        return;
+                    }
+                    else if (result > 0)
+                    {
+                        Console.WriteLine("Second CHAR array is lexicographically FIRST!");
+                        return;
+                    }
+                    else
+                    {
+                        continue;
+                    }
+                }
+                Console.WriteLine("Both are EQUAL!");
+            }
+        }
+    }
+}
