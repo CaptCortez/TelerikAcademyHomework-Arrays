@@ -1,0 +1,50 @@
+using System;
+
+namespace CompareElemByElem
+{
+    class CompareElements
+    {
+        static void Main()
+        {
+            Console.WriteLine("Please enter length of the first array: ");
+            int lengthOfFirstArray = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Please enter length of the second array: ");
+            int lengthOfSecondArray = int.Parse(Console.ReadLine());
+            string output = "";
+
+            int[] firstArray = new int[lengthOfFirstArray];
+            for (int i = 0; i < firstArray.Length; i++)
+            {
+                Console.Write("Enter {0} number in First array:", i + 1);
+                firstArray[i] = int.Parse(Console.ReadLine());
+            }
+            Console.WriteLine();
+            int[] secondArray = new int[lengthOfSecondArray];
+            for (int i = 0; i < secondArray.Length; i++)
+            {
+                Console.Write("Enter {0} number in Second array:", i + 1);
+                secondArray[i] = int.Parse(Console.ReadLine());
+            }
+
+            int length = (firstArray.Length > secondArray.Length) ? secondArray.Length : firstArray.Length;
+
+            for (int i = 0; i < length; i++)
+            {
+                if (firstArray[i] == secondArray[i])
+                {
+                    output += ">>> " + firstArray[i] + " = " + secondArray[i] + "\n";
+                }
+                else if (firstArray[i] > secondArray[i])
+                {
+                    output += ">>> " + firstArray[i] + " > " + secondArray[i] + "\n";
+                }
+                else
+                {
+                    output += ">>> " + firstArray[i] + " < " + secondArray[i] + "\n";
+                }
+            }
+            Console.WriteLine("Comparisson:\n{0}", output);
+        }
+    }
+}
