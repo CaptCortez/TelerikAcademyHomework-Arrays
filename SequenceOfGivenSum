@@ -1,0 +1,51 @@
+using System;
+
+namespace SequenceOfGivenSum
+{
+    class SequenceOfGivenSum
+    {
+        static void Main()
+        {
+            Console.WriteLine("Enter length of the array:");
+            int length;
+            int givenSum;
+            do
+            {
+                Console.Write("Length = ");
+            }
+            while (!int.TryParse(Console.ReadLine(), out length));
+
+            int[] array = new int[length];
+
+            for (int i = 0; i < length; i++)
+            {
+                array[i] = int.Parse(Console.ReadLine());
+            }
+
+            Console.WriteLine("Enter the Sum:");
+            do
+            {
+                Console.Write("S = ");
+            }
+            while(!int.TryParse(Console.ReadLine(), out givenSum));
+
+
+            for (int i = 0; i < length; i++)
+            {
+                int currentSum = 0;
+                string output = "";
+                for (int j = i; j < length; j++)
+                {
+                    currentSum += array[j];
+                    output += array[j] + ",";
+                    if (currentSum == givenSum)
+                    {
+                        Console.WriteLine(currentSum);
+                        Console.WriteLine(output);
+                        return;
+                    }
+                }
+            }
+        }
+    }
+}
