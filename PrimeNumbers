@@ -1,0 +1,31 @@
+using System;
+using System.Threading;
+
+namespace PrimeNumbers
+{
+    class PrimeNumbers
+    {
+        static void Main()
+        {
+            Console.WriteLine("Prime numbers from 0 to 10 000 000: ");
+            int length = 10000000;
+
+            for (int i = 2; i < length; i++)
+            {
+                bool isPrime = ((i == 2 || i == 3 || i == 5 || i == 7) || (i % 2 != 0 && i % 3 != 0 && i % 5 != 0 && i % 7 != 0));
+                if (isPrime)
+                {
+                    if (i == length - 1)// When we reach the end we do not need the last number to be printed with comma at the end.
+                    {
+                        Console.Write(i);
+                    }
+                    else
+                    {
+                        Console.Write(i + ",");
+                    }
+                }
+                Thread.Sleep(10);
+            }
+        }
+    }
+}
