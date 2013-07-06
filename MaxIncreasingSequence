@@ -1,0 +1,56 @@
+using System;
+
+namespace MaxIncreasingSequence
+{
+    class MaxIncreasingSequence
+    {
+        static void Main()
+        {
+            Console.WriteLine("Please enter length for the array:");
+            int n = int.Parse(Console.ReadLine());
+            int start = 0;
+            int len = 1;
+            int bestLen = 0;
+            string num = "";
+            string maxIncSeq = "";
+            int[] numbers = new int[n];
+            int length = numbers.Length;
+
+            for (int i = 0; i < length; i++)
+            {
+                Console.Write("Enter {0} number: ", i + 1);
+                numbers[i] = int.Parse(Console.ReadLine());
+            }
+
+            for (int i = 1; i < length; i++)
+            {
+                if (numbers[i] - numbers[i - 1] == 1)
+                {
+                    start++;
+                    if (start == len)
+                    {
+                        num += numbers[i - 1];
+                        num += numbers[i];
+                    }
+                    if (start > len)
+                    {
+                        len = start;
+                        num += numbers[i];
+                    } 
+                    if (len > bestLen)
+                    {
+                        bestLen = len;
+                        maxIncSeq = num;
+                    }
+                }
+                else
+                {
+                    num = "";
+                    start = 0;
+                    len = 1;
+                }
+            }
+            Console.WriteLine("Max increasing sequence: {0}", maxIncSeq);
+        }
+    }
+}
