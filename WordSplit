@@ -1,0 +1,29 @@
+using System;
+
+namespace WordDissection
+{
+    class WordDissection
+    {
+        static void Main()
+        {
+            Console.WriteLine("Enter a word: ");
+            string input = Console.ReadLine();
+            string word = input.ToLower();
+            char[] alphabet = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+            char[] letters = word.ToCharArray();
+            string output = "";
+
+            for (int i = 0; i < letters.Length; i++)
+            {
+                for (int j = 0; j < alphabet.Length; j++)
+                {
+                    if (letters[i] == alphabet[j])
+                    {
+                        output += letters[i] + " - " + j + ", ";
+                    }
+                }
+            }
+            Console.WriteLine(output);
+        }
+    }
+}
