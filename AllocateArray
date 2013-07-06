@@ -1,0 +1,35 @@
+using System;
+
+namespace AllocateArray
+{
+    class AllocateArray
+    {
+        static void Main()
+        {
+            int[] array = new int[20];
+            Console.WriteLine("Enter 20 numbers:");
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = int.Parse(Console.ReadLine());
+            }
+            Console.WriteLine("\nType YES to display the values multiplied by 5 ot NO to exit!");
+            string input = Console.ReadLine();
+
+            switch (input)
+            {
+                case "YES":
+                    for (int j = 0; j < array.Length; j++)
+                    {
+                        Console.Write(array[j] * 5 + ", ");
+                    }
+                    break;
+                case "NO":
+                    return;
+                default:
+                    Console.WriteLine("PLease enter YES or NO!");
+                    break;
+            }
+        }
+    }
+}
