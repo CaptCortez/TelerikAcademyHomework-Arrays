@@ -1,0 +1,81 @@
+using System;
+
+namespace IfSumOfGivenKElemsExists
+{
+    class SumOfGivenKElems
+    {
+        static void Main()
+        {
+            Console.WriteLine("Enter length of the array:");
+            int length;
+            int givenSum;
+            int elemLength;
+            do
+            {
+                Console.Write("Length = ");
+            }
+            while (!int.TryParse(Console.ReadLine(), out length));
+
+            int[] array = new int[length];
+
+            for (int i = 0; i < length; i++)
+            {
+                array[i] = int.Parse(Console.ReadLine());
+            }
+
+            Console.WriteLine("Enter the Sum:");
+            do
+            {
+                Console.Write("S = ");
+            }
+            while (!int.TryParse(Console.ReadLine(), out givenSum));
+            do
+            {
+                Console.Write("K = ");
+            }
+            while (!int.TryParse(Console.ReadLine(), out elemLength));
+
+            bool elemsWithGivenSumExist = true;
+            if (array.Length > 1)
+            {
+                int maxCombinations = (int)Math.Pow(2, array.Length) - 1;
+
+                for (int i = 1; i < maxCombinations; i++)
+                {
+                    int currentSum = 0;
+                    string outputSubset = "";
+                    int count = 0;
+                    for (int j = 0; j < array.Length; j++)
+                    {
+                        if (((i >> j) & 1) == 1)
+                        {
+                            currentSum += array[j];
+                            outputSubset += array[j] + ",";
+                            count++;
+                        }
+                        if (currentSum == givenSum && count == elemLength)
+                        {
+                            Console.WriteLine("Yes({0})", outputSubset);
+                            return;
+                        }
+                        else
+                        {
+                            elemsWithGivenSumExist = false;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Array too short for subset calculations!");
+            }
+
+
+            //If no K elements with given sum exist, print this message!
+            if (!elemsWithGivenSumExist)
+            {
+                Console.WriteLine("No {0} elements of given sum exist!", elemLength);
+            }
+        }
+    }
+}
