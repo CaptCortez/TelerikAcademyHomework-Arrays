@@ -6,6 +6,7 @@ namespace BinarySearch
     {
         static void Main()
         {
+            //Input
             Console.WriteLine("Enter length of the array:");
             int length;
             do
@@ -26,8 +27,9 @@ namespace BinarySearch
                 Console.Write("Value = ");
             }
             while(!int.TryParse(Console.ReadLine(), out value));
-
-            int[] sortedArray = SortArray(array);
+            
+            //Main
+            int[] sortedArray = SortArray(array); //First sorting the array.
 
             int start = 0;
             int end = array.Length - 1;
